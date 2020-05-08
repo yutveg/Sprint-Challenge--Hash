@@ -5,17 +5,17 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     look_up = {}
     for index, weight in enumerate(weights):
-        print(weight, index)
         look_up[weight] = index
     
     
 
     for index, weight in enumerate(weights):
-        print(f"limit is {limit}, weight is {weight}, need a {limit - weight}")
         if limit - weight in look_up:
-            if limit - weight > weight:
+            if index < look_up[limit - weight]:
+                print((look_up[limit - weight], index))
                 return (look_up[limit - weight], index)
             else:
+                print((index, look_up[limit - weight]))
                 return (index, look_up[limit - weight])
 
             
